@@ -33,8 +33,6 @@ server.post('/cadastroAve', (req, res) => {
         const ave = new Ave(nome, idade, genero, envergadura);
 
         console.log('Ave cadastrada:', ave);
-        persistirAnimal(ave);
-
         res.json({ mensagem: "Ave cadastrada com sucesso", ave });
     } catch (error) {
         console.error('Erro ao cadastrar ave:', error);
@@ -48,7 +46,6 @@ server.post('/cadastroReptil', (req, res) => {
         const reptil = new Reptil(nome, idade, genero, tipo_de_escamas);
 
         console.log('Reptil cadastrado:', reptil);
-        persistirAnimal(reptil);
 
         res.json({ mensagem: "Reptil cadastrado com sucesso", reptil });
     } catch (error) {
@@ -63,7 +60,7 @@ server.post('/cadastroMamifero', (req, res) => {
         const mamifero = new Mamifero(nome, idade, genero, raca);
 
         console.log('Mamifero cadastrado:', mamifero);
-        persistirAnimal(mamifero);
+     
 
         res.json({ mensagem: "Mamifero cadastrado com sucesso", mamifero });
     } catch (error) {
@@ -72,29 +69,7 @@ server.post('/cadastroMamifero', (req, res) => {
     }
 });
 
-server.get('/ListarAnimais', (req, res) => {
-    try {
-        const listaDeAnimais = listarAnimais();
-        console.log(`Retornando a lista de animais cadastrados`);
-        res.json(listaDeAnimais);
-    } catch (error) {
-        console.error('Erro ao listar animais:', error);
-        res.status(500).json({ mensagem: "Erro ao obter a lista de animais" });
-    }
-});
 
-function listarAnimais() {
-    const listaAves = bancoDadosAnimais.filter(animal => animal instanceof Ave);
-    const listaRepteis = bancoDadosAnimais.filter(animal => animal instanceof Reptil);
-    const listaMamiferos = bancoDadosAnimais.filter(animal => animal instanceof Mamifero);
-
-    return {
-        todasAsAves: listaAves,
-        todosOsRepteis: listaRepteis,
-        todosOsMamiferos: listaMamiferos,
-        todosOsAnimais: bancoDadosAnimais
-    };
-}
 server.listen(port, () => {
     console.log(`Servidor está escutando no endereço http://localhost:${port}`);
 });
