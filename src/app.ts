@@ -63,7 +63,7 @@ server.post('/cadastroMamifero', (req, res) => {
         const mamifero = new Mamifero(nome, idade, genero, raca);
 
         console.log('Mamifero cadastrado: ', mamifero);
-     
+
 
         res.json({ mensagem: "Mamifero cadastrado com sucesso: ", mamifero });
     } catch (error) {
@@ -79,7 +79,29 @@ function persistirAve(ave: Ave) {
     } catch (error) {
         console.error(`Erro ao persistir os dados\n ${error}`);
     }
-} 
+}
+//Testando a Classe habitat
+server.post('/habitat', (req, res) => {
+    const { nome, animais } = req.body;
+    const habitat = new Habitat(nome, animais);
+    console.log(habitat);
+    res.status(200).json(`Habitat criado`);
+})
+//Testando a Classe Atracão
+server.post('/Atracao', (req, res) => {
+    const { nome, habitat } = req.body;
+    const atracao = new Atracao(nome, habitat);
+    console.log(atracao);
+    res.status(200).json(`Atração criada`);
+})
+//Testando a classe Zoologico
+server.post('/zoologico', (req, res) => {
+    const { nome, atracao } = req.body;
+    const zoo = new Zoologico(nome, atracao);
+    console.log(zoo);
+    res.status(200).json(`Zoologico criado`);
+})
+
 
 // Resposta se o servidor está on-line
 server.listen(port, () => {
