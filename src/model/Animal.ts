@@ -1,13 +1,33 @@
 export class Animal {
+  /**
+   * Criando o atributo da Classe
+   */
   private nome: string;
+    /**
+   * Criando o atributo da Classe
+   */
   private idade: number;
+    /**
+   * Criando o atributo da Classe
+   */
   private genero: string;
 
+  /**
+ * Construtor da classe que inicializa as propriedades nome, idade e genero.
+ * 
+ * @param _nome O nome do animal a ser atribuído
+ * @param _idade A idade do animal a ser atribuída
+ * @param _genero O gênero do animal a ser atribuído
+ */
   constructor(_nome: string, _idade: number, _genero: string) {
+    // Define o nome do animal com o valor passado como argumento
     this.nome = _nome;
+    // Define a idade do animal com o valor passado como argumento
     this.idade = _idade;
+    // Define o gênero do animal com o valor passado como argumento
     this.genero = _genero;
   }
+
 
   /**
  * Retorna o nome do animal.

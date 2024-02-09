@@ -1,12 +1,26 @@
 import { Animal } from "./Animal";
 
 export class Ave extends Animal {
+    /**
+   * Criando o atributo da Classe
+   */
   private envergadura: number;
 
+  /**
+ * Construtor da classe que inicializa as propriedades nome, idade, genero e envergadura.
+ * 
+ * @param _nome O nome do animal a ser atribuído
+ * @param _idade A idade do animal a ser atribuída
+ * @param _genero O gênero do animal a ser atribuído
+ * @param _envergadura A envergadura do animal a ser atribuída
+ */
   constructor(_nome: string, _idade: number, _genero: string, _envergadura: number) {
+    // Chama o construtor da superclasse Animal para inicializar as propriedades nome, idade e genero
     super(_nome, _idade, _genero);
+    // Define a envergadura do animal com o valor passado como argumento
     this.envergadura = _envergadura;
   }
+
 
   /**
  * Retorna a envergadura do animal.

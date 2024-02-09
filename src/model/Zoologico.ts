@@ -1,13 +1,28 @@
 import { Animal } from "./Animal";
 import { Atracao } from "./Atracao";
 export class Zoologico {
+    /**
+   * Criando o atributo da Classe
+   */
   private nome: string;
+    /**
+   * Criando o atributo da Classe
+   */
   private lista_De_Atracoes: Atracao;
 
+  /**
+   * Construtor da classe que inicializa as propriedades nome e lista_De_Atracoes.
+   * 
+   * @param _nome O nome do habitat a ser atribuído
+   * @param _lista_De_Atracoes A lista de atrações a ser atribuída
+   */
   constructor(_nome: string, _lista_De_Atracoes: Atracao) {
+    // Define o nome do habitat com o valor passado como argumento
     this.nome = _nome;
+    // Define a lista de atrações com o valor passado como argumento
     this.lista_De_Atracoes = _lista_De_Atracoes;
   }
+
   /**
  * Retorna o nome do habitat.
  * 

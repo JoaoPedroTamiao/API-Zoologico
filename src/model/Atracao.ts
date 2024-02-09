@@ -2,50 +2,65 @@ import { Animal } from "./Animal";
 import { Habitat } from "./Habitat";
 
 export class Atracao {
+    /**
+   * Criando o atributo da Classe
+   */
   private nome: string;
+    /**
+   * Criando o atributo da Classe
+   */
   private lista_De_Habitats: Habitat;
 
-  constructor(_nome: string, _lista_De_Habitat: Habitat) {
+  /**
+ * Construtor da classe que inicializa as propriedades nome e lista_De_Habitats.
+ * 
+ * @param _nome O nome do animal a ser atribuído
+ * @param _lista_De_Habitats A lista de habitats a ser atribuída
+ */
+  constructor(_nome: string, _lista_De_Habitats: Habitat) {
+    // Define o nome do animal com o valor passado como argumento
     this.nome = _nome;
-    this.lista_De_Habitats = _lista_De_Habitat;
+    // Define a lista de habitats com o valor passado como argumento
+    this.lista_De_Habitats = _lista_De_Habitats;
   }
+
 
   /**
  * Retorna o nome do habitat.
  * 
  * @returns O nome do habitat
  */
-public getNome(): string {
-  return this.nome;
-}
+  public getNome(): string {
+    return this.nome;
+  }
 
-/**
-* Define o nome do habitat.
-* 
-* @param _nome O nome do habitat a ser atribuído
-*/
-public setNome(_nome: string): void {
-  this.nome = _nome;
-}
+  /**
+  * Define o nome do habitat.
+  * 
+  * @param _nome O nome do habitat a ser atribuído
+  */
+  public setNome(_nome: string): void {
+    this.nome = _nome;
+  }
 
 
- /**
- * Retorna a lista de habitats.
- * 
- * @returns A lista de habitats
- */
-public getLista_De_Habitats(): Habitat {
-  return this.lista_De_Habitats;
-}
+  /**
+  * Retorna a lista de habitats.
+  * 
+  * @returns A lista de habitats
+  */
+  public getLista_De_Habitats(): Habitat {
+    return this.lista_De_Habitats;
+  }
 
-/**
-* Define a lista de habitats.
-* 
-* @param _lista_De_Habitats A lista de habitats a ser atribuída
-*/
-public setLista_De_Habitats(_lista_De_Habitats: Habitat): void {
-  this.lista_De_Habitats = _lista_De_Habitats;
-}
+  /**
+  * Define a lista de habitats.
+  * 
+  * @param _lista_De_Habitats A lista de habitats a ser atribuída
+  */
+  public setLista_De_Habitats(_lista_De_Habitats: Habitat): void {
+    this.lista_De_Habitats = _lista_De_Habitats;
+  }
 
 
 
