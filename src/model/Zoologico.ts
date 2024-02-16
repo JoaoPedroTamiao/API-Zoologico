@@ -1,13 +1,18 @@
 import { Animal } from "./Animal";
 import { Atracao } from "./Atracao";
+/** 
+ * Representa o zoológico, onde os animais são mantidos e exibidos ao público. 
+ * Esta classe fornece uma estrutura para gerenciar os habitats, atrações e animais dentro do zoológico.
+ */
 export class Zoologico {
-    /**
-   * Criando o atributo da Classe
-   */
+  // Propriedades e métodos relacionados ao zoológico podem ser adicionados aqui.
+  /**
+ * Criando o atributo da Classe
+ */
   private nome: string;
-    /**
-   * Criando o atributo da Classe
-   */
+  /**
+ * Criando o atributo da Classe
+ */
   private lista_De_Atracoes: Atracao;
 
   /**

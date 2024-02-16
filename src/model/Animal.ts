@@ -1,4 +1,9 @@
+/** 
+ * Representa um animal genérico no zoológico.
+ * Esta classe serve como uma base para representar características e comportamentos comuns a todos os animais.
+ */ 
 export class Animal {
+  // Propriedades e métodos comuns a todos os animais podem ser adicionados aqui.
   /**
    * Criando o atributo da Classe
    */

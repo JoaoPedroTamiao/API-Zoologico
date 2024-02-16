@@ -1,9 +1,15 @@
 import { Animal } from "./Animal";
-
+/** 
+ * Representa um tipo específico de animal no zoológico, no caso, uma ave. 
+ * Esta classe estende a classe Animal, significando que herda características e comportamentos gerais de animais,
+ * enquanto também pode adicionar ou modificar comportamentos específicos de aves.
+ */
 export class Ave extends Animal {
-    /**
-   * Criando o atributo da Classe
-   */
+  // Métodos e propriedades específicos de aves podem ser adicionados aqui.
+
+  /**
+ * Criando o atributo da Classe
+ */
   private envergadura: number;
 
   /**

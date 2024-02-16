@@ -1,14 +1,21 @@
 import { Animal } from "./Animal";
 import { Habitat } from "./Habitat";
 
+/** 
+ * Representa uma atração dentro do zoológico, onde os visitantes podem interagir e aprender sobre os animais.
+ * Pode incluir exibições, apresentações, áreas interativas, entre outros.
+ */
 export class Atracao {
-    /**
-   * Criando o atributo da Classe
-   */
+  // Propriedades e métodos relacionados à atração podem ser adicionados aqui.
+
+
+  /**
+ * Criando o atributo da Classe
+ */
   private nome: string;
-    /**
-   * Criando o atributo da Classe
-   */
+  /**
+ * Criando o atributo da Classe
+ */
   private lista_De_Habitats: Habitat;
 
   /**

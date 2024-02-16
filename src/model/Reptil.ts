@@ -1,8 +1,14 @@
 import { Animal } from "./Animal";
+/** 
+ * Representa um tipo específico de animal no zoológico, no caso, um réptil. 
+ * Esta classe estende a classe Animal, significando que herda características e comportamentos gerais de animais,
+ * enquanto também pode adicionar ou modificar comportamentos específicos de répteis.
+ */
 export class Reptil extends Animal {
-    /**
-   * Criando o atributo da Classe
-   */
+  // Métodos e propriedades específicos de répteis podem ser adicionados aqui.
+  /**
+ * Criando o atributo da Classe
+ */
   private tipo_de_escamas: string;
 
   /**

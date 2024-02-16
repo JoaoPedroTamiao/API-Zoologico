@@ -1,13 +1,15 @@
 import { Animal } from "./Animal";
-
+/** 
+ * Representa um habitat no zoológico, onde os animais vivem. 
+ */
 export class Habitat {
-    /**
-   * Criando o atributo da Classe
-   */
+  /**
+ * Criando o atributo da Classe
+ */
   private nome: string;
-    /**
-   * Criando o atributo da Classe
-   */
+  /**
+ * Criando o atributo da Classe
+ */
   private lista_De_Animais: Animal;
 
   /**

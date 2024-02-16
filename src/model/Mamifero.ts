@@ -1,8 +1,15 @@
 import { Animal } from "./Animal";
+/** 
+ * Representa um tipo específico de animal no zoológico, no caso, um mamífero. 
+ * Esta classe estende a classe Animal, significando que herda características e comportamentos gerais de animais,
+ * enquanto também pode adicionar ou modificar comportamentos específicos de mamíferos.
+ */
 export class Mamifero extends Animal {
-    /**
-   * Criando o atributo da Classe
-   */
+  // Métodos e propriedades específicos de mamíferos podem ser adicionados aqui.
+
+  /**
+ * Criando o atributo da Classe
+ */
   private raca: string;
 
   /**
