@@ -109,6 +109,63 @@ server.get('/reptil', async (req, res) => {
     res.status(200).json(repteis);
 })
 
+server.post('/new/reptil', async (req, res) => {
+    const { nome, idade, genero, tipo_de_escamas } = req.body;
+
+    const novoReptil = new Reptil(nome, idade, genero, tipo_de_escamas);
+
+    const result = await Reptil.cadastrarReptil(novoReptil);
+
+    if (result) {
+        return res.status(200).json('Reptil cadastrado com sucesso');
+    } else {
+        return res.status(400).json('Não foi possível cadastrar o réptil no banco de dados');
+    }
+
+})
+
+server.get('/ave', async (req, res) => {
+    const aves = await Ave.listarAves();
+
+    res.status(200).json(aves);
+})
+
+server.post('/new/ave', async (req, res) => {
+    const { nome, idade, genero, envergadura } = req.body;
+
+    const novaAve = new Ave(nome, idade, genero, envergadura);
+
+    const result = await Ave.cadastrarAves(novaAve);
+
+    if (result) {
+        return res.status(200).json('Ave cadastrada com sucesso');
+    } else {
+        return res.status(400).json('Não foi possível cadastrar a ave no banco de dados');
+    }
+
+})
+
+server.get('/mamifero', async (req, res) => {
+    const mamiferos = await Mamifero.listarMamiferos();
+
+    res.status(200).json(mamiferos);
+})
+
+server.post('/new/mamifero', async (req, res) => {
+    const { nome, idade, genero, raca } = req.body;
+
+    const novoMamifero = new Mamifero(nome, idade, genero, raca);
+
+    const result = await Mamifero.cadastrarMamifero(novoMamifero);
+
+    if (result) {
+        return res.status(200).json('Mamifero cadastrado com sucesso');
+    } else {
+        return res.status(400).json('Não foi possível cadastrar o Mamifero no banco de dados');
+    }
+
+})
+
 
 new DatabaseModel().testeConexao().then((resbd) => {
     if (resbd) {
