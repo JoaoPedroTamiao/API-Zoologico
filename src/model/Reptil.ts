@@ -1,88 +1,112 @@
 import { Animal } from "./Animal";
 import { DatabaseModel } from "./DatabaseModel";
 
+/**
+ * Pool de conexão do banco de dados
+ */
 const database = new DatabaseModel().pool;
-/** 
- * Representa um tipo específico de animal no zoológico, no caso, um réptil. 
- * Esta classe estende a classe Animal, significando que herda características e comportamentos gerais de animais,
- * enquanto também pode adicionar ou modificar comportamentos específicos de répteis.
+
+/**
+ * Representa um réptil no zoológico, que é uma subclasse de Animal.
  */
 export class Reptil extends Animal {
-  // Métodos e propriedades específicos de répteis podem ser adicionados aqui.
-  /**
- * Criando o atributo da Classe
- */
-  private tipo_de_escamas: string;
+    /**
+     * O tipo de escamas do réptil.
+     */
+    private tipo_escamas: string;
 
-  /**
- * Construtor da classe que inicializa as propriedades nome, idade, genero e tipo_de_escamas.
- * 
- * @param _nome O nome do animal a ser atribuído
- * @param _idade A idade do animal a ser atribuída
- * @param _genero O gênero do animal a ser atribuído
- * @param _tipo_de_escamas O tipo de escamas do animal a ser atribuído
- */
-  constructor(_nome: string, _idade: number, _genero: string, _tipo_de_escamas: string) {
-    // Chama o construtor da superclasse Animal para inicializar as propriedades nome, idade e genero
-    super(_nome, _idade, _genero);
-    // Define o tipo de escamas do animal com o valor passado como argumento
-    this.tipo_de_escamas = _tipo_de_escamas;
-  }
-
-
-  /**
- * Retorna o tipo de escamas do animal.
- * 
- * @returns O tipo de escamas do animal
- */
-  public getTipo_De_Escamas(): string {
-    return this.tipo_de_escamas;
-  }
-
-  /**
-  * Define o tipo de escamas do animal.
-  * 
-  * @param _tipo_de_escamas O tipo de escamas do animal a ser atribuído
-  */
-  public setTipo_De_Escamas(_tipo_de_escamas: string): void {
-    this.tipo_de_escamas = _tipo_de_escamas;
-  }
-
-  static async listarRepteis() {
-    const listaDeRepteis: Array<Reptil> = [];
-    try {
-      const queryReturn = await database.query(`SELECT * FROM  reptil  `);
-      queryReturn.rows.forEach(reptil => {
-        listaDeRepteis.push(reptil);
-      });
-
-      // só pra testar se a lista veio certa do banco
-      console.log(listaDeRepteis);
-
-      return listaDeRepteis;
-    } catch (error) {
-      console.log('Erro no modelo');
-      console.log(error);
-      return "error";
+    /**
+     * Cria uma nova instância de Reptil.
+     * 
+     * @param _nome O nome do réptil.
+     * @param _idade A idade do réptil.
+     * @param _genero O gênero do réptil.
+     * @param _tipo_escamas O tipo de escamas do réptil.
+     */
+    constructor(_nome: string, 
+                _idade: number, 
+                _genero: string, 
+                _tipo_escamas: string) {
+        super(_nome, _idade, _genero);
+        this.tipo_escamas = _tipo_escamas;
     }
-  }
 
-
-  static async cadastrarReptil(reptil: Reptil): Promise<any> {
-    try {
-        let insertResult = false;
-        await database.query(`INSERT INTO reptil (nome, idade, genero, tipo_de_escamas)
-            VALUES
-            ('${reptil.getNome().toUpperCase()}', ${reptil.getIdade()}, '${reptil.getGenero().toUpperCase()}', '${reptil.getTipo_De_Escamas().toUpperCase()}');
-        `).then((result) => {
-            if(result.rowCount != 0) {
-                insertResult = true;
-            }
-        });
-        return insertResult;
-    } catch(error) {
-        return error;
+    /**
+     * Obtém o tipo de escamas do réptil.
+     * 
+     * @returns O tipo de escamas do réptil.
+     */
+    public getTipoEscamas(): string {
+        return this.tipo_escamas;
     }
-}
-  
+
+    /**
+     * Define o tipo de escamas do réptil.
+     * 
+     * @param _tipo_escamas O tipo de escamas a ser atribuído ao réptil.
+     */
+    public setTipoEscamas(_tipo_escamas: string): void {
+        this.tipo_escamas = _tipo_escamas;
+    }
+
+    /**
+     * Retorna uma lista com todos os répteis cadastrados no banco de dados
+     * 
+     * @returns Lista com todos os répteis cadastrados no banco de dados
+     */
+    static async listarRepteis() {
+        // Cria uma lista (array) vazia do tipo Réptil
+        const listaDeRepteis: Array<Reptil> = [];
+        try {
+            // Faz a consulta no banco de dados e retorna o resultado para a variável queryReturn
+            const queryReturn = await database.query(`SELECT * FROM  reptil`);
+            // Percorre todas as linhas da queryReturn e acessa cada objeto individualmente
+            queryReturn.rows.forEach(reptil => {
+                // Coloca o objeto dentro da lista de répteis
+                listaDeRepteis.push(reptil);
+            });
+
+            // só pra testar se a lista veio certa do banco
+            console.log(listaDeRepteis);
+
+            // retorna a lista de mamiferos para quem chamou a função
+            return listaDeRepteis;
+        } catch (error) {
+            // Caso dê algum erro na query do banco, é lançado o erro para quem chamou a função
+            console.log('Erro no modelo');
+            console.log(error);
+            return "error";
+        }
+    }
+
+    /**
+     * Cadastra um objeto do tipo Reptil no banco de dados
+     * 
+     * @param reptil Objeto do tipo Reptil
+     * @returns **true** caso sucesso, **false** caso erro
+     */
+    static async cadastrarReptil(reptil: Reptil): Promise<any> {
+        try {
+            // Cria uma variável do tipo booleano para guardar o status do resultado da query
+            let insertResult = false;
+            // Faz a query de insert no banco de dados, passando para o banco as informações do objeto recebibo como parâmetro pela função
+            await database.query(`INSERT INTO reptil (nome, idade, genero, tipo_de_escamas)
+                VALUES
+                ('${reptil.getNome().toUpperCase()}', ${reptil.getIdade()}, '${reptil.getGenero().toUpperCase()}', '${reptil.getTipoEscamas().toUpperCase()}');
+            `)
+            // Testa para ter certeza que foi possível inserir os dados no banco
+            .then((result) => {
+                // Verifica se o número de linhas adicionadas no banco foi maior que zero
+                if(result.rowCount != 0) {
+                    // Se o número de linhas for maior que zero, a operação deu certo e o valor VERDADEIRO é atribuido na variável
+                    insertResult = true;
+                }
+            });
+            // Retorna VERDADEIRO para quem chamou a função, indicando que a operação foi realizada com sucesso
+            return insertResult;
+        } catch(error) {
+            // Caso a inserção no banco der algum erro, é restorno o valor FALSO para quem chamou a função
+            return error;
+        }
+    }
 }

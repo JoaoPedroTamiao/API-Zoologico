@@ -1,93 +1,89 @@
-/** 
- * Representa um animal genérico no zoológico.
- * Esta classe serve como uma base para representar características e comportamentos comuns a todos os animais.
- */ 
+/**
+ * Representa um animal no zoológico.
+ */
 export class Animal {
-  // Propriedades e métodos comuns a todos os animais podem ser adicionados aqui.
+
   /**
-   * Criando o atributo da Classe
+   * O nome do animal.
    */
   private nome: string;
-    /**
-   * Criando o atributo da Classe
+
+  /**
+   * A idade do animal.
    */
   private idade: number;
-    /**
-   * Criando o atributo da Classe
+
+  /**
+   * O gênero do animal (ex: "macho", "fêmea", "desconhecido").
    */
   private genero: string;
 
   /**
- * Construtor da classe que inicializa as propriedades nome, idade e genero.
- * 
- * @param _nome O nome do animal a ser atribuído
- * @param _idade A idade do animal a ser atribuída
- * @param _genero O gênero do animal a ser atribuído
- */
-  constructor(_nome: string, _idade: number, _genero: string) {
-    // Define o nome do animal com o valor passado como argumento
-    this.nome = _nome;
-    // Define a idade do animal com o valor passado como argumento
-    this.idade = _idade;
-    // Define o gênero do animal com o valor passado como argumento
-    this.genero = _genero;
-  }
-
-
-  /**
- * Retorna o nome do animal.
- * 
- * @returns O nome do animal
- */
-  public getNome(): string {
-    return this.nome;
-  }
-
-  /**
-  * Define o nome do animal.
-  * 
-  * @param _nome O nome do animal a ser atribuído
-  */
-  public setNome(_nome: string): void {
-    this.nome = _nome;
-  }
-
-
-  /**
- * Retorna a idade do animal.
- * 
- * @returns A idade do animal
- */
-  public getIdade(): number {
-    return this.idade;
-  }
-
-  /**
-  * Define a idade do animal.
-  * 
-  * @param _idade A idade do animal a ser atribuída
-  */
-  public setIdade(_idade: number): void {
-    this.idade = _idade;
-  }
-
-  /**
-   * Retorna o gênero do animal.
+   * Cria uma nova instância de Animal.
    * 
-   * @returns O gênero do animal
+   * @param _nome O nome do animal.
+   * @param _idade A idade do animal.
+   * @param _genero O gênero do animal.
+   */
+  constructor(_nome: string,
+              _idade: number,
+              _genero: string) {
+      this.nome = _nome;
+      this.idade = _idade;
+      this.genero = _genero;
+  }
+
+  /**
+   * Obtém o nome do animal.
+   * 
+   * @returns O nome do animal.
+   */
+  public getNome(): string {
+      return this.nome;
+  }
+
+  /**
+   * Define o nome do animal.
+   * 
+   * @param nome O nome a ser atribuído ao animal.
+   */
+  public setNome(nome: string): void {
+      this.nome = nome;
+  }
+
+  /**
+   * Obtém a idade do animal.
+   * 
+   * @returns A idade do animal.
+   */
+  public getIdade(): number {
+      return this.idade;
+  }
+
+  /**
+   * Define a idade do animal.
+   * 
+   * @param idade A idade a ser atribuída ao animal.
+   */
+  public setIdade(idade: number): void {
+      this.idade = idade;
+  }
+
+  /**
+   * Obtém o gênero do animal.
+   * 
+   * @returns O gênero do animal.
    */
   public getGenero(): string {
-    return this.genero;
+      return this.genero;
   }
 
   /**
-  * Define o gênero do animal.
-  * 
-  * @param _genero O gênero do animal a ser atribuído
-  */
-  public setGenero(_genero: string): void {
-    this.genero = _genero;
+   * Define o gênero do animal.
+   * 
+   * @param genero O gênero a ser atribuído ao animal.
+   */
+  public setGenero(genero: string): void {
+      this.genero = genero;
   }
-
-
 }

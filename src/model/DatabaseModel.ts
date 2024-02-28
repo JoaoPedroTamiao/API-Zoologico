@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 export class DatabaseModel {
+    
     private _config: object;
     private _pool: pg.Pool;
     private _client: pg.Client;
